@@ -1,0 +1,19 @@
+{
+  "run_id": "S1-timeout",
+  "scenario_id": "S1-timeout",
+  "messages": [
+    {
+      "role": "system",
+      "content": "AGENT: follow refund policy and use tools to verify every request."
+    },
+    {
+      "role": "user",
+      "content": "My order ORD-100048 reached me very late. I would like a refund."
+    }
+  ],
+  "tokens_used": 0,
+  "llm_calls": 0,
+  "step_number": 0,
+  "steps": [],
+  "tools_executed": []
+}

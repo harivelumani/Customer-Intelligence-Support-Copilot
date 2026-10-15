@@ -1,0 +1,944 @@
+{
+  "overlap_retrieval": {
+    "overlap": 10,
+    "chunk_counts": {
+      "refund_policy.txt": 4,
+      "delivery_policy.txt": 3,
+      "payment_policy.txt": 3,
+      "escalation_policy.txt": 3,
+      "privacy_policy.txt": 2
+    },
+    "total_chunks": 15,
+    "answerable_source_hits": 12,
+    "answerable_fact_hits": 12,
+    "unsupported_fallbacks": 2,
+    "failed_answerable_questions": []
+  },
+  "overlap_evaluation_rows": [
+    {
+      "question": "What delivery time makes a completed order eligible for a full refund?",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_sources": [
+        "refund_policy.txt",
+        "refund_policy.txt",
+        "privacy_policy.txt"
+      ],
+      "answer": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "Who must approve a refund above INR 1000?",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_sources": [
+        "refund_policy.txt",
+        "refund_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "A refund above INR 1000 must be approved by a human support lead before money is returned.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "How many days do I have to raise a refund request?",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_sources": [
+        "refund_policy.txt",
+        "privacy_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "A refund request must be raised within 7 days of the delivery date.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "What is the delivery fee on small orders?",
+      "expected_doc": "delivery_policy.txt",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "delivery_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "A delivery fee of INR 25 is charged on orders below INR 199,\n  of INR 25 is charged on orders below INR 199, and delivery is free on orders of INR 199 or more.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "On orders of what value is delivery free?",
+      "expected_doc": "delivery_policy.txt",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "delivery_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "of INR 25 is charged on orders below INR 199, and delivery is free on orders of INR 199 or more.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "Why does the electronics delivery need a one time password?",
+      "expected_doc": "delivery_policy.txt",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "delivery_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "Electronics items are delivered only after the customer shares a one time password with the rider.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "Is cash on delivery available for a large order?",
+      "expected_doc": "payment_policy.txt",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "payment_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "Cash on delivery is available only for orders up to INR 2500.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "How soon is money returned when a payment fails but is deducted?",
+      "expected_doc": "payment_policy.txt",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "payment_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "If a payment fails but money is deducted, the amount is returned automatically\n  fails but money is deducted, the amount is returned automatically within 48 hours.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "Can wallet balance be refunded as cash?",
+      "expected_doc": "payment_policy.txt",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "payment_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "Wallet balance can be used for any order and is never refunded as cash.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "When are delivery addresses deleted from active systems?",
+      "expected_doc": "privacy_policy.txt",
+      "retrieved_sources": [
+        "privacy_policy.txt",
+        "privacy_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "Delivery addresses are deleted from active systems 180 days after\n  Delivery addresses are deleted from active systems 180 days after the last order.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "How fast must a fraud ticket reach the security team?",
+      "expected_doc": "escalation_policy.txt",
+      "retrieved_sources": [
+        "escalation_policy.txt",
+        "escalation_policy.txt",
+        "escalation_policy.txt"
+      ],
+      "answer": "A ticket about fraud or an unauthorized transaction is marked high priority and sent to the security team within 2 hours.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "After how many steps must an automated assistant hand over to a human?",
+      "expected_doc": "escalation_policy.txt",
+      "retrieved_sources": [
+        "escalation_policy.txt",
+        "escalation_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "If an automated assistant cannot resolve a ticket within 6 steps, it must hand the case to a human agent with a short summary.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "What is the favourite colour of the company mascot?",
+      "expected_doc": "NONE",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "refund_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "I could not find that information in the policy documents.",
+      "source_hit": false,
+      "fact_hit": false,
+      "fallback": true
+    },
+    {
+      "question": "Who won the cricket world cup final?",
+      "expected_doc": "NONE",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "delivery_policy.txt",
+        "privacy_policy.txt"
+      ],
+      "answer": "I could not find that information in the policy documents.",
+      "source_hit": false,
+      "fact_hit": false,
+      "fallback": true
+    }
+  ],
+  "zero_overlap_retrieval": {
+    "overlap": 0,
+    "chunk_counts": {
+      "refund_policy.txt": 3,
+      "delivery_policy.txt": 3,
+      "payment_policy.txt": 3,
+      "privacy_policy.txt": 2,
+      "escalation_policy.txt": 2
+    },
+    "total_chunks": 13,
+    "answerable_source_hits": 12,
+    "answerable_fact_hits": 10,
+    "unsupported_fallbacks": 2,
+    "failed_answerable_questions": [
+      "What delivery time makes a completed order eligible for a full refund?",
+      "How soon is money returned when a payment fails but is deducted?"
+    ]
+  },
+  "zero_overlap_evaluation_rows": [
+    {
+      "question": "What delivery time makes a completed order eligible for a full refund?",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_sources": [
+        "refund_policy.txt",
+        "refund_policy.txt",
+        "privacy_policy.txt"
+      ],
+      "answer": "receives a full refund of the order amount.",
+      "source_hit": true,
+      "fact_hit": false,
+      "fallback": false
+    },
+    {
+      "question": "Who must approve a refund above INR 1000?",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_sources": [
+        "refund_policy.txt",
+        "refund_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "A refund above INR\n  1000 must be approved by a human support lead before money is returned.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "How many days do I have to raise a refund request?",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_sources": [
+        "refund_policy.txt",
+        "refund_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "A refund request must be raised within 7 days of the delivery date.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "What is the delivery fee on small orders?",
+      "expected_doc": "delivery_policy.txt",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "payment_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "A delivery fee of INR 25 is charged on orders below INR 199,\n  Payment Policy.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "On orders of what value is delivery free?",
+      "expected_doc": "delivery_policy.txt",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "delivery_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "A delivery fee of INR 25 is charged on orders below INR 199,\n  and delivery is free on orders of INR 199 or more.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "Why does the electronics delivery need a one time password?",
+      "expected_doc": "delivery_policy.txt",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "delivery_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "Electronics items are delivered only after the customer shares a one time password with the rider.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "Is cash on delivery available for a large order?",
+      "expected_doc": "payment_policy.txt",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "payment_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "Cash on delivery is available only for orders up to INR 2500.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "How soon is money returned when a payment fails but is deducted?",
+      "expected_doc": "payment_policy.txt",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "refund_policy.txt",
+        "privacy_policy.txt"
+      ],
+      "answer": "If a payment fails but money is deducted, the amount is returned automatically\n  1000 must be approved by a human support lead before money is returned.",
+      "source_hit": true,
+      "fact_hit": false,
+      "fallback": false
+    },
+    {
+      "question": "Can wallet balance be refunded as cash?",
+      "expected_doc": "payment_policy.txt",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "payment_policy.txt",
+        "payment_policy.txt"
+      ],
+      "answer": "Wallet balance can be used for any order and is never refunded as cash.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "When are delivery addresses deleted from active systems?",
+      "expected_doc": "privacy_policy.txt",
+      "retrieved_sources": [
+        "privacy_policy.txt",
+        "delivery_policy.txt",
+        "escalation_policy.txt"
+      ],
+      "answer": "Delivery addresses are deleted from active systems 180 days after\n  Delivery Policy.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "How fast must a fraud ticket reach the security team?",
+      "expected_doc": "escalation_policy.txt",
+      "retrieved_sources": [
+        "escalation_policy.txt",
+        "escalation_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "A ticket about fraud or an unauthorized transaction is marked high priority and sent to the security team within 2 hours.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "After how many steps must an automated assistant hand over to a human?",
+      "expected_doc": "escalation_policy.txt",
+      "retrieved_sources": [
+        "escalation_policy.txt",
+        "refund_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "an automated assistant cannot resolve a ticket within 6 steps, it must hand the case to a human agent with a short summary.",
+      "source_hit": true,
+      "fact_hit": true,
+      "fallback": false
+    },
+    {
+      "question": "What is the favourite colour of the company mascot?",
+      "expected_doc": "NONE",
+      "retrieved_sources": [
+        "delivery_policy.txt",
+        "delivery_policy.txt",
+        "refund_policy.txt"
+      ],
+      "answer": "I could not find that information in the policy documents.",
+      "source_hit": false,
+      "fact_hit": false,
+      "fallback": true
+    },
+    {
+      "question": "Who won the cricket world cup final?",
+      "expected_doc": "NONE",
+      "retrieved_sources": [
+        "payment_policy.txt",
+        "privacy_policy.txt",
+        "delivery_policy.txt"
+      ],
+      "answer": "I could not find that information in the policy documents.",
+      "source_hit": false,
+      "fact_hit": false,
+      "fallback": true
+    }
+  ],
+  "scenario_results": [
+    {
+      "scenario_id": "S1",
+      "status": "REFUND",
+      "refund_inr": 128.25,
+      "llm_calls": 5,
+      "tokens_used": 907,
+      "steps": [
+        {
+          "tool_name": "get_order",
+          "arguments": {
+            "order_id": "ORD-100048"
+          },
+          "observation": {
+            "order_id": "ORD-100048",
+            "status": "completed",
+            "order_amount": 128.25,
+            "delivery_minutes": 65
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy late delivery"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.2719281507693355,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.25137413448459545,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.24540580878362583,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "calculate_refund",
+          "arguments": {
+            "order_amount": 128.25,
+            "delivery_minutes": 65
+          },
+          "observation": {
+            "refund_inr": 128.25
+          }
+        },
+        {
+          "tool_name": "issue_refund",
+          "arguments": {
+            "order_id": "ORD-100048",
+            "refund_inr": 128.25
+          },
+          "observation": {
+            "refund_inr": 128.25
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "S2",
+      "status": "REFUND",
+      "refund_inr": 135.0,
+      "llm_calls": 5,
+      "tokens_used": 907,
+      "steps": [
+        {
+          "tool_name": "get_order",
+          "arguments": {
+            "order_id": "ORD-100067"
+          },
+          "observation": {
+            "order_id": "ORD-100067",
+            "status": "completed",
+            "order_amount": 135.0,
+            "delivery_minutes": 59
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy late delivery"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.2719281507693355,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.25137413448459545,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.24540580878362583,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "calculate_refund",
+          "arguments": {
+            "order_amount": 135.0,
+            "delivery_minutes": 59
+          },
+          "observation": {
+            "refund_inr": 135.0
+          }
+        },
+        {
+          "tool_name": "issue_refund",
+          "arguments": {
+            "order_id": "ORD-100067",
+            "refund_inr": 135.0
+          },
+          "observation": {
+            "refund_inr": 135.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "S3",
+      "status": "ESCALATE",
+      "refund_inr": 1999.0,
+      "llm_calls": 5,
+      "tokens_used": 894,
+      "steps": [
+        {
+          "tool_name": "get_order",
+          "arguments": {
+            "order_id": "ORD-100145"
+          },
+          "observation": {
+            "order_id": "ORD-100145",
+            "status": "completed",
+            "order_amount": 1999.0,
+            "delivery_minutes": 54
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy late delivery"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.2719281507693355,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.25137413448459545,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.24540580878362583,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "calculate_refund",
+          "arguments": {
+            "order_amount": 1999.0,
+            "delivery_minutes": 54
+          },
+          "observation": {
+            "refund_inr": 1999.0
+          }
+        },
+        {
+          "tool_name": "escalate_to_human",
+          "arguments": {
+            "order_id": "ORD-100145",
+            "refund_inr": 1999.0
+          },
+          "observation": {
+            "refund_inr": 1999.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "S4",
+      "status": "DENIED",
+      "refund_inr": 0.0,
+      "llm_calls": 4,
+      "tokens_used": 613,
+      "steps": [
+        {
+          "tool_name": "get_order",
+          "arguments": {
+            "order_id": "ORD-100001"
+          },
+          "observation": {
+            "order_id": "ORD-100001",
+            "status": "completed",
+            "order_amount": 109.65,
+            "delivery_minutes": 20
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy late delivery"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.2719281507693355,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.25137413448459545,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.24540580878362583,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "calculate_refund",
+          "arguments": {
+            "order_amount": 109.65,
+            "delivery_minutes": 20
+          },
+          "observation": {
+            "refund_inr": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "S5",
+      "status": "DENIED",
+      "refund_inr": 0.0,
+      "llm_calls": 3,
+      "tokens_used": 343,
+      "steps": [
+        {
+          "tool_name": "get_order",
+          "arguments": {
+            "order_id": "ORD-100025"
+          },
+          "observation": {
+            "order_id": "ORD-100025",
+            "status": "cancelled",
+            "order_amount": 45.0,
+            "delivery_minutes": null
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy late delivery"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.2719281507693355,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.25137413448459545,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.24540580878362583,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "S6",
+      "status": "NOT_FOUND",
+      "refund_inr": 0.0,
+      "llm_calls": 2,
+      "tokens_used": 76,
+      "steps": [
+        {
+          "tool_name": "get_order",
+          "arguments": {
+            "order_id": "ORD-999999"
+          },
+          "observation": {
+            "error": "order not found"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "S7",
+      "status": "FALLBACK_MAX_ITERATIONS",
+      "refund_inr": 0.0,
+      "llm_calls": 6,
+      "tokens_used": 3012,
+      "steps": [
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.3659728242412813,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.19509794680248,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.1760691906727241,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.3659728242412813,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.19509794680248,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.1760691906727241,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.3659728242412813,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.19509794680248,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.1760691906727241,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.3659728242412813,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.19509794680248,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.1760691906727241,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.3659728242412813,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.19509794680248,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.1760691906727241,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        },
+        {
+          "tool_name": "search_policy",
+          "arguments": {
+            "query": "refund policy"
+          },
+          "observation": {
+            "results": [
+              {
+                "source": "refund_policy.txt",
+                "score": 0.3659728242412813,
+                "text": "Refund Policy. A refund can be requested only for orders whose status is completed. Orders with status cancelled were never charged, so no refund applies to them. If a completed order is delivered in more than 45 minutes, the customer"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.19509794680248,
+                "text": "order is delivered in more than 45 minutes, the customer receives a full refund of the order amount. If a completed order is delivered in 45 minutes or less, no late-delivery refund is paid. Refunds up to INR 1000 are"
+              },
+              {
+                "source": "refund_policy.txt",
+                "score": 0.1760691906727241,
+                "text": "late-delivery refund is paid. Refunds up to INR 1000 are approved automatically by the support system. A refund above INR 1000 must be approved by a human support lead before money is returned. Approved refunds are credited to the original"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "token_limit_demo": {
+    "status": "FALLBACK_TOKEN_LIMIT",
+    "llm_calls": 3,
+    "tokens_used": 360
+  },
+  "timeout_demo": {
+    "status": "FALLBACK_TIMEOUT",
+    "llm_calls": 0,
+    "tokens_used": 0
+  },
+  "crash_recovery": {
+    "status": "REFUND",
+    "final_answer": "REFUND: INR 128.25 issued.",
+    "tools_executed": [
+      "get_order",
+      "search_policy",
+      "calculate_refund",
+      "issue_refund"
+    ],
+    "llm_calls": 5,
+    "tokens_used": 907
+  },
+  "tools_spec": [
+    {
+      "name": "get_order",
+      "description": "Fetch a clean order by its unique order ID.",
+      "parameters": {
+        "order_id": "string"
+      }
+    },
+    {
+      "name": "search_policy",
+      "description": "Retrieve policy chunks relevant to a query.",
+      "parameters": {
+        "query": "string"
+      }
+    },
+    {
+      "name": "calculate_refund",
+      "description": "Calculate a full refund only for delivery later than 45 minutes.",
+      "parameters": {
+        "order_amount": "number",
+        "delivery_minutes": "integer"
+      }
+    },
+    {
+      "name": "issue_refund",
+      "description": "Record an eligible automatic refund of INR 1000 or less.",
+      "parameters": {
+        "order_id": "string",
+        "refund_inr": "number"
+      }
+    },
+    {
+      "name": "escalate_to_human",
+      "description": "Record an eligible refund above INR 1000 for human approval.",
+      "parameters": {
+        "order_id": "string",
+        "refund_inr": "number"
+      }
+    }
+  ]
+}

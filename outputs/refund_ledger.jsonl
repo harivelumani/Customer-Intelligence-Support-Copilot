@@ -1,0 +1,3 @@
+{"timestamp": "2026-10-15T09:57:51.953281+00:00", "tool": "issue_refund", "run_id": "S1", "idempotency_key": "S1:call_4", "order_id": "ORD-100048", "refund_inr": 128.25}
+{"timestamp": "2026-10-15T09:57:51.977305+00:00", "tool": "issue_refund", "run_id": "S2", "idempotency_key": "S2:call_4", "order_id": "ORD-100067", "refund_inr": 135.0}
+{"timestamp": "2026-10-15T09:57:52.001976+00:00", "tool": "escalate_to_human", "run_id": "S3", "idempotency_key": "S3:call_4", "order_id": "ORD-100145", "refund_inr": 1999.0}

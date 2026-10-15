@@ -1,0 +1,196 @@
+{
+  "cohort_rows": 1156,
+  "lapsed_rows": 443,
+  "lapsed_rate": 0.38321799307958476,
+  "train_rows": 924,
+  "test_rows": 232,
+  "feature_columns": [
+    "frequency",
+    "monetary",
+    "average_discount",
+    "average_delivery",
+    "recency",
+    "favourite_category",
+    "cancellation_rate",
+    "city",
+    "age",
+    "gender",
+    "tenure_days"
+  ],
+  "no_missing_features": true,
+  "scaler_frequency_mean": 7.307017543859649,
+  "full_cohort_frequency_mean": 8.028546712802768,
+  "majority_baseline": {
+    "accuracy": 0.6163793103448276,
+    "precision_lapsed": 0.0,
+    "recall_lapsed": 0.0,
+    "f1_lapsed": 0.0,
+    "confusion_matrix": [
+      [
+        143,
+        0
+      ],
+      [
+        89,
+        0
+      ]
+    ]
+  },
+  "logistic_regression": {
+    "best_params": {
+      "classifier__C": 100
+    },
+    "best_cv_f1": 0.650552962900789,
+    "test": {
+      "accuracy": 0.728448275862069,
+      "precision_lapsed": 0.6444444444444445,
+      "recall_lapsed": 0.651685393258427,
+      "f1_lapsed": 0.6480446927374302,
+      "confusion_matrix": [
+        [
+          111,
+          32
+        ],
+        [
+          31,
+          58
+        ]
+      ]
+    },
+    "balanced_training_test": {
+      "accuracy": 0.7241379310344828,
+      "precision_lapsed": 0.6,
+      "recall_lapsed": 0.8426966292134831,
+      "f1_lapsed": 0.7009345794392523,
+      "confusion_matrix": [
+        [
+          93,
+          50
+        ],
+        [
+          14,
+          75
+        ]
+      ]
+    },
+    "balanced_train_class_counts": {
+      "0": 570,
+      "1": 570
+    },
+    "top_coefficients": [
+      {
+        "feature": "numeric__frequency",
+        "coefficient": -1.6972779061628964
+      },
+      {
+        "feature": "categorical__favourite_category_Electronics",
+        "coefficient": -1.1350458430684531
+      },
+      {
+        "feature": "categorical__favourite_category_Grocery",
+        "coefficient": -0.44937488787283975
+      }
+    ]
+  },
+  "random_forest": {
+    "best_params": {
+      "classifier__max_depth": 8,
+      "classifier__min_samples_leaf": 10
+    },
+    "best_cv_f1": 0.6865517479789224,
+    "test": {
+      "accuracy": 0.7198275862068966,
+      "precision_lapsed": 0.6333333333333333,
+      "recall_lapsed": 0.6404494382022472,
+      "f1_lapsed": 0.6368715083798883,
+      "confusion_matrix": [
+        [
+          110,
+          33
+        ],
+        [
+          32,
+          57
+        ]
+      ]
+    },
+    "top_feature_importances": [
+      {
+        "feature": "numeric__monetary",
+        "importance": 0.28042311355440735
+      },
+      {
+        "feature": "numeric__frequency",
+        "importance": 0.2779891472615294
+      },
+      {
+        "feature": "numeric__recency",
+        "importance": 0.10910083893122548
+      },
+      {
+        "feature": "numeric__average_delivery",
+        "importance": 0.059735164065718785
+      },
+      {
+        "feature": "numeric__cancellation_rate",
+        "importance": 0.05183341205721902
+      }
+    ]
+  },
+  "selected_model": "logistic_regression",
+  "serialized_predictions_match": true,
+  "retention_list_rows": 10,
+  "retention_list_actual_lapsed": 4,
+  "retention_list": [
+    {
+      "customer_id": "C0082",
+      "lapse_probability": 0.7747966064820486,
+      "actually_lapsed": 0
+    },
+    {
+      "customer_id": "C0267",
+      "lapse_probability": 0.7600401162471723,
+      "actually_lapsed": 0
+    },
+    {
+      "customer_id": "C0060",
+      "lapse_probability": 0.7459615074458888,
+      "actually_lapsed": 0
+    },
+    {
+      "customer_id": "C0525",
+      "lapse_probability": 0.7333874751790193,
+      "actually_lapsed": 1
+    },
+    {
+      "customer_id": "C0271",
+      "lapse_probability": 0.7306165058670109,
+      "actually_lapsed": 1
+    },
+    {
+      "customer_id": "C0167",
+      "lapse_probability": 0.6787816219368183,
+      "actually_lapsed": 0
+    },
+    {
+      "customer_id": "C1146",
+      "lapse_probability": 0.632803931930657,
+      "actually_lapsed": 1
+    },
+    {
+      "customer_id": "C0665",
+      "lapse_probability": 0.6060932778543632,
+      "actually_lapsed": 0
+    },
+    {
+      "customer_id": "C0942",
+      "lapse_probability": 0.605484345694018,
+      "actually_lapsed": 0
+    },
+    {
+      "customer_id": "C0332",
+      "lapse_probability": 0.5963378352018213,
+      "actually_lapsed": 1
+    }
+  ]
+}

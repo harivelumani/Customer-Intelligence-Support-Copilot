@@ -1,0 +1,177 @@
+{
+  "zero_shot": {
+    "tickets_classified": 147,
+    "correct_classifications": 126,
+    "accuracy": 0.8571428571428571,
+    "total_tokens": 9088,
+    "tokens_per_classified_ticket": 61.82312925170068,
+    "status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    },
+    "response_status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9
+    },
+    "transient_exceptions": 19,
+    "redaction_counts": {
+      "email": 55,
+      "phone": 91,
+      "order_id": 132
+    },
+    "redaction_total": 278
+  },
+  "zero_shot_confusion": {
+    "billing": {
+      "billing": 38,
+      "delivery": 0,
+      "fraud": 11,
+      "technical": 10
+    },
+    "delivery": {
+      "billing": 0,
+      "delivery": 36,
+      "fraud": 0,
+      "technical": 0
+    },
+    "fraud": {
+      "billing": 0,
+      "delivery": 0,
+      "fraud": 23,
+      "technical": 0
+    },
+    "technical": {
+      "billing": 0,
+      "delivery": 0,
+      "fraud": 0,
+      "technical": 29
+    }
+  },
+  "few_shot": {
+    "tickets_classified": 147,
+    "correct_classifications": 147,
+    "accuracy": 1.0,
+    "total_tokens": 14080,
+    "tokens_per_classified_ticket": 95.78231292517007,
+    "status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    },
+    "response_status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9
+    },
+    "transient_exceptions": 19,
+    "redaction_counts": {
+      "email": 55,
+      "phone": 91,
+      "order_id": 132
+    },
+    "redaction_total": 278
+  },
+  "budget_demo": {
+    "budget": 6000,
+    "tokens_used": 6018,
+    "exhausted_tickets": 53,
+    "status_counts": {
+      "classified_json": 90,
+      "budget_exhausted": 53,
+      "classified_keyword": 7,
+      "flagged_invalid_output": 6,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    }
+  },
+  "final_few_shot": {
+    "budget": 100000,
+    "tokens_used": 14080,
+    "rows": 164,
+    "status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    }
+  },
+  "retry_log_entries": 69,
+  "retry_log": [
+    "T0002 retry=0 wait=0.052993s",
+    "T0116 retry=0 wait=0.045313s",
+    "T0153 retry=0 wait=0.048438s",
+    "T0039 retry=0 wait=0.047790s",
+    "T0152 retry=0 wait=0.054206s",
+    "T0043 retry=0 wait=0.053459s",
+    "T0111 retry=0 wait=0.056152s",
+    "T0155 retry=0 wait=0.046087s",
+    "T0100 retry=0 wait=0.050274s",
+    "T0068 retry=0 wait=0.045372s",
+    "T0135 retry=0 wait=0.047733s",
+    "T0009 retry=0 wait=0.051317s",
+    "T0067 retry=0 wait=0.045332s",
+    "T0106 retry=0 wait=0.047485s",
+    "T0097 retry=0 wait=0.053124s",
+    "T0003 retry=0 wait=0.051812s",
+    "T0019 retry=0 wait=0.047756s",
+    "T0086 retry=0 wait=0.052366s",
+    "T0065 retry=0 wait=0.055118s",
+    "T0002 retry=0 wait=0.052993s",
+    "T0116 retry=0 wait=0.045313s",
+    "T0153 retry=0 wait=0.048438s",
+    "T0039 retry=0 wait=0.047790s",
+    "T0152 retry=0 wait=0.054206s",
+    "T0043 retry=0 wait=0.053459s",
+    "T0111 retry=0 wait=0.056152s",
+    "T0155 retry=0 wait=0.046087s",
+    "T0100 retry=0 wait=0.050274s",
+    "T0068 retry=0 wait=0.045372s",
+    "T0135 retry=0 wait=0.047733s",
+    "T0009 retry=0 wait=0.051317s",
+    "T0067 retry=0 wait=0.045332s",
+    "T0106 retry=0 wait=0.047485s",
+    "T0097 retry=0 wait=0.053124s",
+    "T0003 retry=0 wait=0.051812s",
+    "T0019 retry=0 wait=0.047756s",
+    "T0086 retry=0 wait=0.052366s",
+    "T0065 retry=0 wait=0.055118s",
+    "T0002 retry=0 wait=0.052993s",
+    "T0116 retry=0 wait=0.045313s",
+    "T0153 retry=0 wait=0.048438s",
+    "T0039 retry=0 wait=0.047790s",
+    "T0152 retry=0 wait=0.054206s",
+    "T0043 retry=0 wait=0.053459s",
+    "T0111 retry=0 wait=0.056152s",
+    "T0155 retry=0 wait=0.046087s",
+    "T0100 retry=0 wait=0.050274s",
+    "T0068 retry=0 wait=0.045372s",
+    "T0135 retry=0 wait=0.047733s",
+    "T0009 retry=0 wait=0.051317s",
+    "T0002 retry=0 wait=0.052993s",
+    "T0116 retry=0 wait=0.045313s",
+    "T0153 retry=0 wait=0.048438s",
+    "T0039 retry=0 wait=0.047790s",
+    "T0152 retry=0 wait=0.054206s",
+    "T0043 retry=0 wait=0.053459s",
+    "T0111 retry=0 wait=0.056152s",
+    "T0155 retry=0 wait=0.046087s",
+    "T0100 retry=0 wait=0.050274s",
+    "T0068 retry=0 wait=0.045372s",
+    "T0135 retry=0 wait=0.047733s",
+    "T0009 retry=0 wait=0.051317s",
+    "T0067 retry=0 wait=0.045332s",
+    "T0106 retry=0 wait=0.047485s",
+    "T0097 retry=0 wait=0.053124s",
+    "T0003 retry=0 wait=0.051812s",
+    "T0019 retry=0 wait=0.047756s",
+    "T0086 retry=0 wait=0.052366s",
+    "T0065 retry=0 wait=0.055118s"
+  ]
+}
