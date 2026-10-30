@@ -4,7 +4,7 @@ This repository implements a synthetic Instamart Customer Intelligence & Support
 
 # Reproduce
 
-Run from the repository root with Python 3.11+ and SQLite 3.25+. `requirements.txt` pins the four direct third-party dependencies; pip resolves their compatible transitive dependencies. On Windows PowerShell:
+Run from the repository root with Python 3.11+ and SQLite 3.25+. `requirements.txt` was written with `pip freeze` and includes the permitted libraries together with the packages pip installed alongside them. On Windows PowerShell:
 
 1. `python -m venv .venv`
 2. `.\.venv\Scripts\Activate.ps1`
@@ -12,7 +12,7 @@ Run from the repository root with Python 3.11+ and SQLite 3.25+. `requirements.t
 4. `python generate_data.py`
 5. `python run_all.py`
 
-On macOS/Linux, use `source .venv/bin/activate` in step 2. The generator's final line is verified as `generated: customers=1200 products=40 orders_raw=13084 tickets=164`. `run_all.py` executes the Part A, B, C, and D pipelines in order, creates the required outputs, and prints the Part A validation checkpoint. To run the acceptance tests after reproduction: `python -m unittest discover -s tests -v`.
+On macOS/Linux, use `source .venv/bin/activate` in step 2. `requirements.txt` is the output of `pip freeze` from the Python 3.11 environment used to run this project. It records pandas, NumPy, scikit-learn, joblib, and the compatible packages pip installed with them. The generator's final line is verified as `generated: customers=1200 products=40 orders_raw=13084 tickets=164`. `run_all.py` executes the Part A, B, C, and D pipelines in order, creates the required outputs, and prints the Part A validation checkpoint. To run the acceptance tests after reproduction: `python -m unittest discover -s tests -v`.
 
 # Part A
 
@@ -49,9 +49,9 @@ Raw null counts and percentages (all unlisted columns have zero missing values):
 
 ## Cleaning and storage
 
-Customer cities were trimmed and title-cased, yielding six supported cities. Gender variants map to `male`, `female`, or `unknown`. The 61 blank and six out-of-range ages (67 total) were filled with each city's median using `groupby` and `transform`; signup dates were parsed as datetimes. Final city counts: Pune 227, Delhi 210, Bengaluru 197, Chennai 191, Hyderabad 191, Mumbai 184. Gender counts: female 610, male 560, unknown 30. Ages are complete and range from 18 to 60.
+Customer cities were trimmed and title-cased on 476 of 1200 rows, yielding six supported cities. Gender spellings were remapped on 950 rows to `male`, `female`, or `unknown`, including the 30 blank values. All 1200 signup dates were parsed as datetimes. The 61 blank and six out-of-range ages (67 total) were filled with each city's median using `groupby` and `transform`. Final city counts: Pune 227, Delhi 210, Bengaluru 197, Chennai 191, Hyderabad 191, Mumbai 184. Gender counts: female 610, male 560, unknown 30. Ages are complete and range from 18 to 60.
 
-Order cleaning follows the required sequence: parse timestamps; remove 119 exact duplicate rows; keep the latest timestamp per order ID (resolving earlier pending records); coerce amount values to numeric and reconstruct 112 missing amounts using product price × quantity × (1 − discount/100), rounded to two decimals; turn 105 negative delivery values remaining after deduplication into missing values; fill 774 missing completed-order delivery times with the completed-order median for that product category; leave cancelled delivery times missing. The final table has 12309 unique orders: 11110 completed and 1199 cancelled, no pending rows, no missing amounts, no missing completed delivery times, and 1199 missing cancelled delivery times. Completed-order revenue is INR 2,998,668.80.
+Order cleaning follows the required sequence: all 13084 timestamps were parsed as datetimes; 119 exact duplicate rows were removed; 656 earlier rows were then dropped by keeping the latest timestamp per order ID; amount values were coerced to numeric and 112 missing amounts were reconstructed using product price × quantity × (1 − discount/100), rounded to two decimals; 105 negative delivery values remaining after deduplication were turned into missing values; 774 missing completed-order delivery times were filled with the completed-order median for that product category; 1199 cancelled delivery times were left missing. The final table has 12309 unique orders: 11110 completed and 1199 cancelled, no pending rows, no missing amounts, no missing completed delivery times, and 1199 missing cancelled delivery times. Completed-order revenue is INR 2,998,668.80.
 
 The clean CSVs are `data/clean/customers.csv`, `data/clean/products.csv`, and `data/clean/orders.csv`. `data/instamart.db` has `customers`, `products`, and `orders` tables; `order_ts` is stored as `YYYY-MM-DD HH:MM:SS`. The validator asserts multiple customer, order, revenue, and query checkpoints and prints `ALL CHECKPOINTS PASSED` only when they all hold.
 
@@ -120,7 +120,7 @@ Premium is assigned to the highest-mean-monetary cluster. Cluster IDs are arbitr
 
 ## Lapse prediction
 
-The pre-September cohort has 1156 customers; 443 (38.32%) are labelled lapsed. Features use completed orders strictly before `2025-09-01`, plus pre-cutoff cancellation rate, average discount, average delivery, favourite category, city, age, gender, and signup tenure. Segment labels are excluded. A stratified `random_state=42` split yields 924 training and 232 test rows. The `ColumnTransformer` fits numeric scaling and `OneHotEncoder(drop="first")` only on training data; all feature values are nonmissing. Learned training frequency mean is 7.307 versus full-cohort 8.029 because the scaler is fitted only on the training split.
+The pre-September cohort has 1156 customers; 443 (38.32%) are labelled lapsed. Features use completed orders strictly before `2025-09-01`, plus pre-cutoff cancellation rate, average discount, average delivery, favourite category, city, age, gender, and signup tenure. No order dated `2025-09-01` or later entered the features, and the segment labels from the clustering task were not used as features. A stratified `random_state=42` split yields 924 training and 232 test rows. The `ColumnTransformer` fits numeric scaling and `OneHotEncoder(drop="first")` only on training data; all feature values are nonmissing. No encoder, scaler, or resampler saw test rows. Learned training frequency mean is 7.307 versus full-cohort 8.029 because the scaler is fitted only on the training split.
 
 | Model | Search result | Best CV F1 | Test accuracy | Lapsed precision | Lapsed recall | Lapsed F1 | Confusion matrix (actual rows: stay, lapse; predicted columns: stay, lapse) |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -140,7 +140,9 @@ The five largest Random Forest importances were monetary 0.280, frequency 0.278,
 
 Tickets are processed in original file order. Four blank tickets are `skipped_empty`; four tickets longer than 400 estimated tokens are `flagged_long` and are not sent to the model (each long example estimates to 734 tokens). Email, phone, and order-ID redaction was applied in that order: 55 emails, 91 phones, and 132 order IDs (278 total substitutions); post-redaction checks found zero remaining matches. The user message contains only the redacted ticket text, and code asserts no raw match reaches a prompt.
 
-Both prompts require JSON with one of `billing`, `delivery`, `technical`, or `fraud`. The few-shot prompt adds two labelled examples, including fraud; the zero-shot prompt has no `EXAMPLES:` section. Every independent run resets the simulator. Each full run had 19 transient exceptions, all recovered with a jittered exponential retry; every retry delay is logged in `outputs/triage_retries.log`. Output parsing accepts valid allowed-category JSON as `classified_json`, exactly one allowed category extracted from malformed text as `classified_keyword`, and otherwise flags for human review without guessing.
+Both prompts require JSON with one of `billing`, `delivery`, `technical`, or `fraud`. The few-shot prompt adds two labelled examples, including fraud; the zero-shot prompt has no `EXAMPLES:` section. Every independent run resets the simulator. Each full run had 19 transient exceptions, all recovered with a jittered exponential retry; every retry is retry number 0 and each logged wait is between 0.045 and 0.0575 seconds. Every retry delay is logged in `outputs/triage_retries.log`.
+
+On each full run of the 156 eligible tickets, response validation counted `classified_json` 135, `classified_keyword` 12, and `flagged_invalid_output` 9. Valid allowed-category JSON is `classified_json`. When JSON parsing fails, words are extracted with `re.findall(r"[a-z]+", text.lower())`, so `billing-related` yields `billing`; exactly one allowed category word is `classified_keyword`. Every other reply, including valid JSON with a category outside the allowed list, is `flagged_invalid_output`. The 135 JSON and 12 keyword results are rule-validated. The 9 invalid outputs, the 4 `skipped_empty` tickets, and the 4 `flagged_long` tickets go to human review and are never guessed. The same 135 / 12 / 9 counts hold for both the zero-shot and few-shot runs.
 
 | Run | Classified | Correct | Accuracy | Total tokens | Tokens / classified |
 |---|---:|---:|---:|---:|---:|
@@ -156,7 +158,7 @@ The zero-shot confusion table:
 | fraud | 0 | 0 | 23 | 0 |
 | technical | 0 | 0 | 0 | 29 |
 
-Few-shot used 4992 additional tokens (about 55% more) and improved measured accuracy by 14.29 percentage points. That cost is warranted when category accuracy and safe fraud routing matter more than token economy; a lower-stakes or tightly budgeted queue may prefer zero-shot with human review for uncertain outputs.
+Few-shot used 4992 additional tokens (14080 versus 9088), about 33.96 extra tokens per classified ticket (95.78 versus 61.82) and about 55% more tokens overall, and improved measured accuracy by 14.29 percentage points. That per-ticket cost is warranted when category accuracy and safe fraud routing matter more than token economy; a lower-stakes or tightly budgeted queue may prefer zero-shot with human review for uncertain outputs.
 
 With a zero-shot demo budget of 6000 tokens, usage reached 6018 across calls, and 53 tickets were marked `budget_exhausted` before any further model calls. The final few-shot run uses a budget of 100000 and writes all 164 rows to `outputs/triage_results.csv`; `outputs/triage_budget_demo.csv` records the budget demonstration. Routing prioritizes human-review statuses, then fraud to the high-priority security team, then Premium customers to the high-priority premium desk, and all remaining tickets to the normal support queue.
 
@@ -186,7 +188,9 @@ The `TOOLS_SPEC` and `TOOL_MAP` provide five validated tools: `get_order` reads 
 
 Safety demonstrations: the S1 token-limit run stopped with `FALLBACK_TOKEN_LIMIT` after 3 model calls and 360 accumulated tokens (limit 200), without executing the tool requested by the over-limit response. A zero-second time limit returned `FALLBACK_TIMEOUT` before its first model call (0 calls, 0 tokens). S7 made all six allowed model calls before returning `FALLBACK_MAX_ITERATIONS`.
 
-The implemented ReAct flow made 5 model calls and used 907 tokens for S1, adapting after each order, policy, and calculation observation; across the seven scenarios it made 30 calls. It handled missing and cancelled orders using observed tool results rather than assuming a successful refund. A plan-and-execute system could draft a fixed sequence before acting, but this project did not implement or measure that alternative. For this workflow, ReAct's stepwise verification is preferable because refund eligibility and escalation depend on database observations; explicit tool-side checks remain necessary regardless of planning style.
+The implemented ReAct agent calls the model once after each observation. Across the seven scenarios it made 30 model calls and used 6752 tokens. S1, a completed late order, took 5 calls and 907 tokens and executed `get_order`, `search_policy`, `calculate_refund`, and `issue_refund` before `REFUND`. S4 observed a completed order delivered in 20 minutes, `calculate_refund` returned INR 0.00, and the run stopped as `DENIED` after 4 calls and 613 tokens. S5 observed status `cancelled` and a null delivery time, then returned `DENIED` after 3 calls and 343 tokens without calculating or issuing a refund. S6 observed `{"error": "order not found"}` and returned `NOT_FOUND` after 2 calls and 76 tokens. S3 escalated INR 1999.00 after 5 calls and 894 tokens. S7 used all 6 allowed calls and 3012 tokens before `FALLBACK_MAX_ITERATIONS`.
+
+A plan-and-execute design would ask once for the whole step list and replan only after an error. This project did not run that design, so it has no measured call count or token total for it. A plan written before `get_order` cannot know whether the next legal action is a refund, a denial, or a stop. S6's missing order and S5's cancelled order are exactly those unexpected observations: the agent changed course from the tool result instead of continuing a refund sequence. ReAct is preferable for this workflow because eligibility is decided from the database observation just returned. The tools still recheck completion, the 45-minute rule, and the INR 1000 approval limit on every refund path.
 
 # Limitations and Next Steps
 
